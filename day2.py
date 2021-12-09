@@ -1,15 +1,9 @@
-
 def part1(path: str) -> int:
-    x = 0
-    y = 0
-
-    file = open(path, 'r')
-    for line in file:
-        ...
+    x = y = 0
 
     with open(path, 'r') as file:
         for line in file:
-            command =     line.split()[0]
+            command = line.split()[0]
             amount  = int(line.split()[1])
 
             if command == "forward":
@@ -22,8 +16,7 @@ def part1(path: str) -> int:
     return x * y
 
 def part2(path: str) -> int:
-    x = 0
-    y = 0
+    x = y = 0
     aim = 0
 
     with open(path, 'r') as file:
@@ -41,10 +34,6 @@ def part2(path: str) -> int:
 
     return x * y
 
-
-def main():
+if __name__ == '__main__':
     print(f"PART 1: {part1('input/day2.txt')}")
     print(f"PART 2: {part2('input/day2.txt')}")
-
-if __name__ == '__main__':
-    main()
