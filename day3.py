@@ -1,6 +1,3 @@
-from os import O_TEXT
-
-
 def ParseFile(path: str) -> list[str]:
     res = []
     with open(path) as file:
