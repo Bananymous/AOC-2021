@@ -63,8 +63,6 @@ int part2(char* path)
     for (int i = 0; i < h; i++) {
         for (int j = 0; j < w; j++) {
             if (heights[i][j] != 9 && !hasChecked(checked, i, j)) {
-                std::unordered_set<uint64_t> basin;
-                basin.insert(hash(i, j));
                 checked.insert(hash(i, j));
 
                 std::stack<std::pair<int, int>> toCheck;
@@ -73,6 +71,7 @@ int part2(char* path)
                 toCheck.push({i + 1, j});
                 toCheck.push({i, j + 1});
 
+                int basin_size = 1;
                 while (!toCheck.empty())
                 {
                     auto[x, y] = toCheck.top();
@@ -83,8 +82,9 @@ int part2(char* path)
                         continue;
                     if(!hasChecked(checked, x, y))
                     {
+                        basin_size++;
+
                         checked.insert(hash(x, y));
-                        basin.insert(hash(x, y));
                         toCheck.push({x - 1, y    });
                         toCheck.push({x,     y - 1});
                         toCheck.push({x + 1, y    });
@@ -92,8 +92,8 @@ int part2(char* path)
                     }
                 }
 
-                if (basin.size() > basins[0]) {
-                    basins[0] = basin.size();
+                if (basin_size > basins[0]) {
+                    basins[0] = basin_size;
                     if (basins[0] > basins[1])
                         std::swap(basins[0], basins[1]);
                     if (basins[1] > basins[2])

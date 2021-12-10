@@ -39,7 +39,7 @@ int64_t part2(const char* path)
     std::vector<int64_t> ans;
     std::string line;
 
-    std::unordered_map<char, int64_t> value = { { '(', 1}, { '[', 2 }, { '{', 3 }, { '<', 4 } };
+    std::unordered_map<char, int64_t> value = { { '(', 1 }, { '[', 2 }, { '{', 3 }, { '<', 4 } };
 
     while (file >> line) {
         std::stack<char> s;
