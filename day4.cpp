@@ -105,7 +105,7 @@ int part2(char* path)
             it->Draw(num);
             if (it->Wins()) {
                 if (boards.size() == 1)
-                    return boards.front().GetSum() * num;
+                    return it->GetSum() * num;
                 it = boards.erase(it);
             } else it++;
         }
